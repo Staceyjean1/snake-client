@@ -1,4 +1,7 @@
 const net = require("net");
+const connect = require('./connect');
+
+
 
 // establishes a connection with the game server
 const connect = function () {
@@ -12,20 +15,13 @@ const connect = function () {
 
   conn.on("connect", () => {
     console.log(`Server says: Connected Successfully`)
-    conn.write("Name: SJB");
-    // conn.write("Move: up");
-  });
-conn.on("connect", () => {
-    console.log(`Server says: Connected Successfully`)
-    // conn.write("Name: SJB");
-    conn.write("Move: up");
-    conn.write('Move: up');
-    conn.write("Move:left");
-    conn.write("Move:left");
   });
   conn.on("data", (data) => {
     console.log(data.toString())
     conn.end()
+  });
+  conn.on("connect", () => {
+    conn.write(`Name: SJB`)
   });
   return conn;
 };
