@@ -1,4 +1,5 @@
 const net = require("net");
+const { stdin } = require("process");
 
 // establishes a connection with the game server
 const connect = function () {
@@ -16,19 +17,34 @@ const connect = function () {
     // conn.write("Move: up");
   });
 conn.on("connect", () => {
-    console.log(`Server says: Connected Successfully`)
-    // conn.write("Name: SJB");
+  setInterval(() => {
     conn.write("Move: up");
     conn.write('Move: up');
-    conn.write("Move:left");
-    conn.write("Move:left");
+    // conn.write("Move: left");
+    // conn.write('Move: left');
+  },"2000")
+  
+    console.log(`Server says: Connected Successfully`)
+ 
+    const setupInput = function () {
+      const stdin = process.stdin;
+      stdin.setRawMode(true);
+      stdin.setEncoding("utf8");
+      stdin.resume();
+      stdin.on("data", handleUserInput);
+      return stdin;
+    };
   });
-  conn.on("data", (data) => {
-    console.log(data.toString())
-    conn.end()
-  });
+
+  const handleUserInput = function () {
+    stdin.on('data', (key) => {
+    process.stdout.write('.');
+    });
+  };
   return conn;
 };
+  
+
 
 console.log("Connecting ...");
 connect();
