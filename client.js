@@ -20,9 +20,6 @@ const connect = function () {
     console.log(data.toString())
     conn.end()
   });
-  conn.on("connect", () => {
-    conn.write(`Name: SJB`)
-  });
   return conn;
 };
 

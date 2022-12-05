@@ -1,3 +1,8 @@
+let connection;
+
+const setupInput = (conn) => {
+  connection = conn;
+};
 const handleUserInput = require("./handleUserInput");
 const setupInput = require("./setupInput");
 
