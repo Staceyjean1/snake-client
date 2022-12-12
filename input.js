@@ -22,3 +22,12 @@ if (key === 'd') {
   clearInterval(func);
   setInterval(rightkey)
 };
+if (key === 't') {
+  "Say:Howdy";
+}
+if (key === 'r') {
+  "Say:See ya";
+}
+if (key === 'q') {
+  "Say: Merry Christmas";
+};
